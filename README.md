@@ -25,7 +25,7 @@ LLM: OpenAI API
 Installation
 
 # Clone the repository
-git clone https://github.com/your-repo/headphone-mode.git
+git clone [https://github.com/your-repo/headphone-mode.git](https://github.com/Matthew-Curreri/headphoneMode/)
 cd headphone-mode
 
 # Install dependencies
