@@ -130,5 +130,6 @@
      knownsAndUnknownsPrompt,
      methodicalSolutionPrompt,
      chainOfThoughtAssistantPrompt,
+     manager,
  };
  
