@@ -29,7 +29,7 @@ git clone https://github.com/Matthew-Curreri/headphoneMode
 cd headphone-mode
 
 # Install dependencies
-npm installhttps://github.com/Matthew-Curreri/headphoneMode/
+npm install
 
 # Set environment variables
 cp .env.example .env
