@@ -18,6 +18,7 @@ FILES=(
     "$BASE_DIR/frontend/index.html"
     "$BASE_DIR/frontend/styles/styles.css"
     "$BASE_DIR/frontend/scripts/main.js"
+    "$BASE_DIR/frontend/scripts/init.js"
     "$BASE_DIR/frontend/scripts/api.js"
     "$BASE_DIR/frontend/scripts/audio.js"
     "$BASE_DIR/backend/pages/index.js"
