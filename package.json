@@ -1,0 +1,35 @@
+{
+  "name": "headphone-mode",
+  "version": "1.0.0",
+  "description": "LLM-powered Headphone Mode application",
+  "main": "backend/pages/index.js",
+  "scripts": {
+    "start": "node backend/pages/index.js",
+    "dev": "nodemon backend/pages/index.js",
+    "setup": "bash Setup-Scripts/init.sh"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "openai": "^4.85.4",
+    "package.json": "^0.0.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "author": "mcurreri & ChatGPT",
+  "license": "MIT",
+  "keywords": [
+    "LLM",
+    "AI",
+    "OpenAI",
+    "voice assistant",
+    "machine learning",
+    "next.js",
+    "sqlite",
+    "backend",
+    "frontend",
+    "speech recognition"
+  ]
+}
