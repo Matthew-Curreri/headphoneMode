@@ -111,7 +111,13 @@
  2) Describe how you would test or validate it.
  3) Conclude with the final answer, refined by the test results.
  `;
- 
+/**
+  * 11. Manager
+  *     - Encourages a step-by-step, logical approach using a "hypothesize - test - conclude" model.
+  */
+   const manager = `
+   I am trying to ensure all these responses make sense on a logical axis not just based on inital results.  Sometimes I notice that the conversation changed abruptly but not in a way that makes sense.  This is likely a new speaker or background noise tag the errant words move them to a sub section in a note and see if the other words recognized now make more sense.  Note logical errors such as this and any other that you may notice or think of at the time.  Thank you.
+   `;
  // Export all prompt templates
  module.exports = {
      toneAdjustmentPrompt,
