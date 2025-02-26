@@ -16,7 +16,7 @@ if [ -f "$DB_PATH" ]; then
     # Check if required tables exist
     TABLE_COUNT=$(sqlite3 "$DB_PATH" "SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name IN ('users', 'sessions', 'preferences', 'security', 'usage_tracking', 'subscriptions');")
 
-    if [ "$TABLE_COUNT" -eq 6 ]; then
+    if [ "$TABLE_COUNT" -eq 12 ]; then
         echo "All required tables are present. No changes needed."
         exit 0
     else

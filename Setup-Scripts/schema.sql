@@ -1,5 +1,6 @@
 -- ============================================================================
 -- SQLite Database Schema for Headphone Mode (Production Ready)
+-- When Adding a table update here and add 1 to the setupdb.sh script
 -- ============================================================================
 
 -- Attach to or create the main database file
