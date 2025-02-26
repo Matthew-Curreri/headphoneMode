@@ -11,6 +11,7 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "formidable": "^3.5.2",
     "openai": "^4.85.4",
     "package.json": "^0.0.0",
     "sqlite3": "^5.1.7"

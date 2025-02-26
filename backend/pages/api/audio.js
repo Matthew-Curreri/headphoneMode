@@ -2,11 +2,14 @@
 
 const fs = require('fs');
 const path = require('path');
-const config = require('/home/mcurreri/Projects/headphone-mode/backend/config.js');
+const config = require(path.join(process.cwd(), 'backend/config.js'));
 const formidable = require('formidable');
 const { exec } = require('child_process');
 const fetch = require('node-fetch');
 const FormData = require('form-data');
+const keywordScan = require(path.join(process.cwd(), 'localAudioProc/keywordScan.js'));
+const micAccess = require(path.join(process.cwd(), 'localAudioProc/micAccess.js'));
+
 
 function handler(req, res) {
     if (req.method !== 'POST') {
