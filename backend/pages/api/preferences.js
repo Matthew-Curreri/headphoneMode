@@ -1,7 +1,7 @@
 // preferences.js - Handles user preferences storage and retrieval
 
 const sqlite3 = require('sqlite3').verbose();
-const config = require('/home/mcurreri/Projects/headphone-mode/backend/config.js');
+const config = require(path.join(process.cwd(), 'backend/config.js'));
 const express = require('express');
 const router = express.Router();
 

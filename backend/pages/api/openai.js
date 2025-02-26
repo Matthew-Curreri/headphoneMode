@@ -1,7 +1,7 @@
 // openai.js - Handles LLM interactions
 
 const OpenAI = require('openai');
-const config = require('/home/mcurreri/Projects/headphone-mode/backend/config.js');
+const config = require(path.join(process.cwd(), 'backend/config.js'));
 
 const openai = new OpenAI({ apiKey: config.api.openaiApiKey });
 
