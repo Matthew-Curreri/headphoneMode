@@ -10,7 +10,6 @@ const FormData = require('form-data');
 const keywordScan = require(path.join(process.cwd(), 'localAudioProc/keywordScan.js'));
 const micAccess = require(path.join(process.cwd(), 'localAudioProc/micAccess.js'));
 
-
 function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method Not Allowed' });
@@ -30,9 +29,13 @@ function handler(req, res) {
             return res.status(400).json({ error: 'No audio file received' });
         }
 
-        const transcriptionCommand = `whisper ${audioFile} --model base --output_format json`;
+        // Use 'conda run -n whisper' to ensure we are in the correct conda env
+        // Also use the --model turbo flag by default
+        const transcriptionCommand = `conda run -n whisper whisper "${audioFile}" --model turbo --output_format json`;
+
         exec(transcriptionCommand, (error, stdout) => {
             if (error) {
+                console.error('Error during Whisper transcription:', error);
                 return res.status(500).json({ error: 'Speech-to-text failed' });
             }
             res.status(200).json({ transcript: stdout });
@@ -43,7 +46,8 @@ function handler(req, res) {
 module.exports = handler;
 
 function testAudioAPI() {
-    const testAudioPath = 'test-audio.wav'; // Ensure this file exists for testing
+    // Provide a path to a test WAV file that exists
+    const testAudioPath = 'test-audio.wav';
     const formData = new FormData();
     formData.append('audio', fs.createReadStream(testAudioPath));
 
