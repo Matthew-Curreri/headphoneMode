@@ -28,4 +28,4 @@ else
     sqlite3 "$DB_PATH" < "$SCHEMA_FILE"
 fi
 
-echo "Database setup complete."
+echo "Database setup complete." 
