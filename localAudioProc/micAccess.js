@@ -30,7 +30,7 @@ function nodeMicAccess() {
     // Listen for data events from the microphone
     micInstance.on('data', (chunk) => {
       console.log('Mic chunk received:', chunk.length, 'bytes');
-      // You can process or store this chunk as needed
+      // Process & store this chunk 
     });
   
     // Return the micInstance so the caller can stop/cleanup later
@@ -67,32 +67,31 @@ function nodeMicAccess() {
   }
   
   // Example usage in the browser:
-  function usageExampleWeb() {
-    let currentStream = null;
-    const startBtn = document.getElementById('startBtn');
-    const stopBtn = document.getElementById('stopBtn');
+  // function usageExampleWeb() {
+  //   let currentStream = null;
+  //   const startBtn = document.getElementById('startBtn');
+  //   const stopBtn = document.getElementById('stopBtn');
   
-    startBtn.addEventListener('click', () => {
-      webMicAccess()
-        .then((stream) => {
-          currentStream = stream;
-          console.log('Recording started...');
-        });
-    });
+  //   startBtn.addEventListener('click', () => {
+  //     webMicAccess()
+  //       .then((stream) => {
+  //         currentStream = stream;
+  //         console.log('Recording started...');
+  //       });
+  //   });
   
-    stopBtn.addEventListener('click', () => {
-      if (currentStream) {
-        currentStream.getTracks().forEach(track => track.stop());
-        console.log('Recording stopped.');
-      }
-    });
-  }
+  //   stopBtn.addEventListener('click', () => {
+  //     if (currentStream) {
+  //       currentStream.getTracks().forEach(track => track.stop());
+  //       console.log('Recording stopped.');
+  //     }
+  //   });
+  // }
   
   // Export only what you need in your environment
   module.exports = {
     nodeMicAccess,
     usageExampleNode,
     webMicAccess,
-    usageExampleWeb,
   };
   

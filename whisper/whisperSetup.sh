@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #
-# Script Name: install_whisper_turbo.sh
+# Script Name: whisperSetup.sh
 # Description: Installs dependencies and Whisper in the 'whisper' conda environment, 
 #              ensuring PyTorch is installed with CUDA support, ffmpeg is installed, 
 #              and the turbo model is downloaded.
 #
-# Usage:       ./install_whisper_turbo.sh
+# Usage:       ./whisperSetup.sh
 #
 # NOTE: This script assumes you have conda installed and accessible on PATH.
 #       If "conda" commands are not recognized, you may need to adjust your shell
