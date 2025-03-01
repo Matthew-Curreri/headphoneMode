@@ -3,14 +3,12 @@ let mediaRecorder = null;
 let audioChunks = [];
 let audioElement = null;
 let micSelect = null;
-const micAccess =  require("/home/mcurreri/Projects/headphone-mode/localAudioProc/micAccess.js"); 
-// Export only what you need in your environment
-
 
 
 function initUI() {
   const startBtn = document.createElement('button');
   const stopBtn = document.createElement('button');
+  const br = document.createElement("br");
 
   startBtn.textContent = 'Start';
   startBtn.id = 'startBtn';
@@ -21,16 +19,20 @@ function initUI() {
   audioElement = document.createElement('audio');
   audioElement.controls = true;
   
+
+  document.body.appendChild(audioElement);
+  document.body.appendChild(br);
   document.body.appendChild(micSelect);
   document.body.appendChild(startBtn);
   document.body.appendChild(stopBtn);
-  document.body.appendChild(audioElement);
   
   startBtn.addEventListener('click', startRecording);
   stopBtn.addEventListener('click', stopRecording);
   
   updateMicList();
+  setTimeout(updateMicList, 200);
   setInterval(updateMicList, 2000);
+
 }
 
 function updateMicList() {

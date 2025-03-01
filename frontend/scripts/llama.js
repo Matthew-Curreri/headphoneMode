@@ -34,7 +34,7 @@ class RMSNorm {
 function precomputeFreqsCis(dim, end, theta = 10000.0) {
     let freqs = new Float32Array(dim / 2).map((_, i) => 1.0 / (theta ** (i / dim)));
     let t = new Float32Array(end).map((_, i) => i);
-    let freqsCis = t.map(val => Math.exp(1j * val * freqs)); // Simulating complex numbers
+    let freqsCis = t.map(val => Math.exp(j * val * freqs)); // Simulating complex numbers
     return freqsCis;
 }
 

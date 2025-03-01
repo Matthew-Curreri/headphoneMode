@@ -13,46 +13,45 @@
  * Example usage for both Node.js and the web is included below. Nothing is attached to the global scope.
  */
 
-// --------------------- //
-// Node.js Microphone    //
-// --------------------- //
-
-function nodeMicAccess() {
+ const micAccess = {
+  // --------------------- //
+  // Node.js Microphone    //
+  // --------------------- //
+  nodeMicAccess: function () {
     // Load a Node audio capture library (e.g., 'node-record-lpcm16')
     const record = require('node-record-lpcm16');
-  
+
     // Start recording from the system’s default microphone
     const micInstance = record.start({
       sampleRateHertz: 16000,
       verbose: false,
     });
-  
+
     // Listen for data events from the microphone
     micInstance.on('data', (chunk) => {
       console.log('Mic chunk received:', chunk.length, 'bytes');
-      // Process & store this chunk 
+      // Process & store this chunk
     });
-  
+
     // Return the micInstance so the caller can stop/cleanup later
     return micInstance;
-  }
-  
+  },
+
   // Example usage in Node.js:
-  function usageExampleNode() {
-    const micInstance = nodeMicAccess();
-  
+  usageExampleNode: function () {
+    const micInstance = micAccess.nodeMicAccess();
+
     // Stop recording after 5 seconds
     setTimeout(() => {
       micInstance.stop();
       console.log('Stopped recording from mic');
     }, 5000);
-  }
-  
+  },
+
   // --------------------- //
   // Web Microphone        //
   // --------------------- //
-  
-  function webMicAccess() {
+  webMicAccess: function () {
     // Request permission to access the microphone
     return navigator.mediaDevices.getUserMedia({ audio: true })
       .then((stream) => {
@@ -64,34 +63,28 @@ function nodeMicAccess() {
         console.error('Mic access error:', err);
         throw err;
       });
-  }
-  
-  // Example usage in the browser:
-  // function usageExampleWeb() {
-  //   let currentStream = null;
-  //   const startBtn = document.getElementById('startBtn');
-  //   const stopBtn = document.getElementById('stopBtn');
-  
-  //   startBtn.addEventListener('click', () => {
-  //     webMicAccess()
-  //       .then((stream) => {
-  //         currentStream = stream;
-  //         console.log('Recording started...');
-  //       });
-  //   });
-  
-  //   stopBtn.addEventListener('click', () => {
-  //     if (currentStream) {
-  //       currentStream.getTracks().forEach(track => track.stop());
-  //       console.log('Recording stopped.');
-  //     }
-  //   });
-  // }
-  
-  // Export only what you need in your environment
-  module.exports = {
-    nodeMicAccess,
-    usageExampleNode,
-    webMicAccess,
-  };
-  
+  },
+};
+
+// Example usage in the browser:
+// function usageExampleWeb() {
+//   let currentStream = null;
+//   const startBtn = document.getElementById('startBtn');
+//   const stopBtn = document.getElementById('stopBtn');
+
+//   startBtn.addEventListener('click', () => {
+//     micAccess.webMicAccess()
+//       .then((stream) => {
+//         currentStream = stream;
+//         console.log('Recording started...');
+//       });
+//   });
+
+//   stopBtn.addEventListener('click', () => {
+//     if (currentStream) {
+//       currentStream.getTracks().forEach(track => track.stop());
+//       console.log('Recording stopped.');
+//     }
+//   });
+// }
+
