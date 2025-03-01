@@ -16,8 +16,8 @@ function initUI() {
   br.classList.add('break');
   recordingIndicator.classList.add('recordingIndicator');
   recordingIndicator.classList.add('recordingIndicator');
-  recordingIndicator.classList.add('breathing-fast');
-  // recordingIndicator.classList.add('spinning');
+  //recordingIndicator.classList.add('breathing-fast');
+   recordingIndicator.classList.add('spinning');
   //recordingIndicator.classList.add('cloud');
 
   startBtn.textContent = 'Start';

@@ -37,7 +37,8 @@ const getContentType = (filePath) => {
     ".jpg": "image/jpeg",
     ".jpeg": "image/jpeg",
     ".gif": "image/gif",
-    ".svg": "image/svg+xml"
+    ".svg": "image/svg+xml",
+    ".webp": "image/webp",
   };
   return map[ext] || "application/octet-stream";
 };

@@ -20,9 +20,19 @@
 }
 
 @keyframes spinning {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg) scale(1); }
+    10% { transform: rotate(36deg) scale(0.9); }
+    20% { transform: rotate(72deg) scale(0.8); }
+    30% { transform: rotate(108deg) scale(0.75); }
+    40% { transform: rotate(144deg) scale(0.725); }
+    50% { transform: rotate(180deg) scale(0.75); }
+    60% { transform: rotate(216deg) scale(0.6); }
+    70% { transform: rotate(252deg) scale(0.7); }
+    80% { transform: rotate(288deg) scale(0.8); }
+    90% { transform: rotate(324deg) scale(0.95); }
+    100% { transform: rotate(360deg) scale(1); }
 }
+
 .button {
     width: 120px;
     height: 40px;
@@ -88,7 +98,7 @@
 
 /* Spinning */
 .spinning {
-    animation: spinning 4s infinite linear;
+    animation: spinning 15s infinite linear;
 }
 
 /* Core Elements */
