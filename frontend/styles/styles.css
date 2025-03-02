@@ -237,24 +237,31 @@ body {
     background: #f9f9f9;
     display: flex;
     flex-direction: column;
+    z-index: 30;
   }
   
   .message {
     margin: 5px 0;
     padding: 10px;
     border-radius: 8px;
+    z-index: 30;
+
   }
   
   .message.user {
     align-self: flex-end;
     background-color: #0078d4;
     color: white;
+    z-index: 30;
+
   }
   
   .message.assistant {
     align-self: flex-start;
     background-color: #e1e1e1;
     color: black;
+    z-index: 30;
+
   }
   
   /* Input area */
@@ -263,6 +270,8 @@ body {
     padding: 10px;
     border-top: 1px solid #ddd;
     background: #fff;
+    z-index: 30;
+
   }
   
   #chat-input {
@@ -271,6 +280,8 @@ body {
     padding: 10px;
     border-radius: 4px;
     margin-right: 10px;
+    z-index: 30;
+
   }
   
   #send-btn {
@@ -280,5 +291,7 @@ body {
     border-radius: 4px;
     color: white;
     cursor: pointer;
+    z-index: 30;
+
   }
   

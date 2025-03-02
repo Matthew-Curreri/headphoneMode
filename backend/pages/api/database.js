@@ -98,7 +98,7 @@ async function getUserById(userId) {
 async function createUser(username, email, passwordHash, salt) {
   const query = `
     INSERT INTO users (username, email, password_hash, salt)
-    VALUES (?, ?, ?, ?)
+    VALUES (${username}, ${email}, ${passwordHash}, ${salt})
   `;
   const result = await run(query, [username, email, passwordHash, salt]);
   return result.lastID;
@@ -114,7 +114,7 @@ async function createUser(username, email, passwordHash, salt) {
 async function createSession(userId, sessionToken, expiresAt) {
   const query = `
     INSERT INTO sessions (user_id, session_token, expires_at)
-    VALUES (?, ?, ?)
+    VALUES (${user_id}, ${sessionToken}, ${expiresAt})
   `;
   const result = await run(query, [userId, sessionToken, expiresAt]);
   return result.lastID;
@@ -126,7 +126,7 @@ async function createSession(userId, sessionToken, expiresAt) {
  * @returns {Promise<Object>} Resolves with the session record.
  */
 async function getSession(sessionToken) {
-  const query = `SELECT * FROM sessions WHERE session_token = ?`;
+  const query = `SELECT * FROM sessions WHERE session_token = ${sessionToken}`;
   return await get(query, [sessionToken]);
 }
 
@@ -137,7 +137,7 @@ async function getSession(sessionToken) {
  * @returns {Promise<Object>}
  */
 async function updateSessionExpiry(sessionToken, newExpiresAt) {
-  const query = `UPDATE sessions SET expires_at = ? WHERE session_token = ?`;
+  const query = `UPDATE sessions SET expires_at = ${newExpiresAt} WHERE session_token = ${sessionToken}`;
   return await run(query, [newExpiresAt, sessionToken]);
 }
 
@@ -153,18 +153,18 @@ async function updateSessionExpiry(sessionToken, newExpiresAt) {
  * @returns {Promise<void>}
  */
 async function savePreferences(userId, preferencesData) {
-  const existing = await get(`SELECT * FROM preferences WHERE user_id = ?`, [userId]);
+  const existing = await get(`SELECT * FROM preferences WHERE user_id =`, [userId]);
   if (existing) {
     const query = `
       UPDATE preferences
-      SET preferences_data = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      SET preferences_data = ${preferencesData}, updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ${userId}
     `;
     await run(query, [preferencesData, userId]);
   } else {
     const query = `
       INSERT INTO preferences (user_id, preferences_data)
-      VALUES (?, ?)
+      VALUES ${userId}  ${preferencesData})
     `;
     await run(query, [userId, preferencesData]);
   }
@@ -176,7 +176,7 @@ async function savePreferences(userId, preferencesData) {
  * @returns {Promise<string|null>} Resolves with preferences data or null.
  */
 async function getPreferences(userId) {
-  const query = `SELECT preferences_data FROM preferences WHERE user_id = ?`;
+  const query = `SELECT preferences_data FROM preferences WHERE user_id = ${userId}`;
   const row = await get(query, [userId]);
   return row ? row.preferences_data : null;
 }
@@ -195,7 +195,7 @@ async function getPreferences(userId) {
 async function saveMessage(chatId, sender, content) {
   const query = `
     INSERT INTO messages (chat_id, sender, content, timestamp)
-    VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+    VALUES (${chatId}, ${sender}, ${content}, CURRENT_TIMESTAMP)
   `;
   const result = await run(query, [chatId, sender, content]);
   return result.lastID;
@@ -210,7 +210,7 @@ async function getChatHistory(chatId) {
   const query = `
     SELECT sender, content, timestamp
     FROM messages
-    WHERE chat_id = ?
+    WHERE chat_id = ${chatId}
     ORDER BY timestamp
   `;
   return await all(query, [chatId]);
@@ -229,8 +229,8 @@ async function getChatHistory(chatId) {
 async function updateUsageTracking(userId, tokensUsed) {
   const query = `
     UPDATE usage_tracking
-    SET token_count = token_count + ?
-    WHERE user_id = ?
+    SET token_count = token_count + ${tokensUsed}
+    WHERE user_id = ${userId}
   `;
   await run(query, [tokensUsed, userId]);
 }
@@ -240,7 +240,7 @@ async function updateUsageTracking(userId, tokensUsed) {
    ========================= */
 
 module.exports = {
-  db, // Exporting the raw database connection if needed.
+  //db,
   run,
   get,
   all,

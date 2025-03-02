@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require('./database');
-const register = require('./api/register');
-const login = require('./api/login');
-const messages = require('./api/messages');
-const feedback = require('./api/feedback');
+const db = require('../database');
+const register = require('../api/register');
+const login = require('../api/login');
+const messages = require('../api/messages');
+const feedback = require('../api/feedback');
 
 const app = express();
 app.use(bodyParser.json());
