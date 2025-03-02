@@ -4,7 +4,7 @@
 -- ============================================================================
 
 -- Attach to or create the main database file
-PRAGMA database_list;
+-- PRAGMA database_list;
 ATTACH DATABASE '../backend/headphone-mode.db' AS main;
 
 -- ============================================================================

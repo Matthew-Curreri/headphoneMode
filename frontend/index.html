@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Headphone Mode</title>
+    <title>headphoneMode</title>
     <link rel="stylesheet" href="styles/styles.css">
   </head>
   <body>
     <!-- <div id="shader" name="shader" class="shader"></div> -->
-    <div id="main-content" name="main-content" class="main-content-container"></div>
-    <div id="controls" name="controls" class="controls" ></div>
+    <!-- <div id="main-content" name="main-content" class="main-content-container"></div> -->
+    <!-- <div id="controls" name="controls" class="controls" ></div> -->
 
     <script src="/localAudioProc/micAccess.js">
     </script>
-    <script src="/scripts/init.js"></script>
+    <!--<script src="/scripts/init.js"></script> -->
     <script>
       //Firing order in GUI layer 1
-       initUI();
-       startRecording();
+      //  initUI();
+      //  startRecording();
        //setTimeout(stopRecording, 200);
     </script>
     <!-- Chat Interface HTML -->
@@ -32,7 +32,7 @@
 <button id="train-btn">Train Model</button>
 
 <script src="/scripts/chatApp.js"></script>
-    <script src="/scripts/experimental/tokenizer.js"></script>
+    <!-- <script src="/scripts/experimental/tokenizer.js"></script> -->
     <script>document.getElementById('train-btn').onclick = async () => {
       const fileInput = document.getElementById('train-file');
       if (fileInput.files.length === 0) return;
