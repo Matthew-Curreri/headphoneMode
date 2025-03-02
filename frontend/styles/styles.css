@@ -98,7 +98,7 @@
 
 /* Spinning */
 .spinning {
-    animation: spinning 15s infinite linear;
+    animation: spinning 35s infinite linear;
 }
 
 /* Core Elements */
