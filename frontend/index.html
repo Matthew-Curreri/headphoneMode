@@ -20,6 +20,34 @@
        startRecording();
        //setTimeout(stopRecording, 200);
     </script>
+    <!-- Chat Interface HTML -->
+<div id="chat-container">
+  <!-- Messages will be appended here as <div class="message"> elements -->
+</div>
+<div id="input-area">
+  <input type="text" id="chat-input" placeholder="Type a message..." />
+  <button id="send-btn">Send</button>
+</div>
+<input type="file" id="train-file" accept=".json,.csv" />
+<button id="train-btn">Train Model</button>
+
+<script src="/scripts/chatApp.js"></script>
     <script src="/scripts/experimental/tokenizer.js"></script>
+    <script>document.getElementById('train-btn').onclick = async () => {
+      const fileInput = document.getElementById('train-file');
+      if (fileInput.files.length === 0) return;
+      const file = fileInput.files[0];
+      const textData = await file.text();
+      const examples = parseTrainingData(textData); // user-defined parser
+      await fineTuneModel(examples);
+      alert('Fine-tuning complete! Model updated.');
+      // Send a log to backend (optional)
+      fetch('/api/train-log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ datasetName: file.name, examples: examples.length })
+      });
+    };
+    </script>
   </body>
 </html>
