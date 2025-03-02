@@ -9,7 +9,7 @@ const path = require("path");
  * Application configuration
  */
 const config = {
-  host: "localhost",
+  host: "0.0.0.0",
   port: 3500,
   frontendDir: "/home/mcurreri/Projects/headphone-mode/frontend",
   localAudioServices: "/home/mcurreri/Projects/headphone-mode/localAudioProc",
