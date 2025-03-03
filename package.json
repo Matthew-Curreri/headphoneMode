@@ -1,5 +1,5 @@
 {
-  "name": "headphone-mode",
+  "name": "headphoneMode",
   "version": "1.0.0",
   "description": "LLM-powered Headphone Mode application",
   "main": "backend/pages/index.js",

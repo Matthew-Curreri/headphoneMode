@@ -9,7 +9,7 @@ const config = {
     backendPort: process.env.PORTBACKEND || 3000,
 
     // Database Configuration
-    dbPath: path.join(__dirname, 'headphone-mode.db'),
+    dbPath: path.join(__dirname, 'headphoneMode.db'),
     
     // API Settings
     api: {

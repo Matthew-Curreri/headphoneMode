@@ -7,8 +7,8 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 // Path to the SQLite database file.
-// Adjust the path as needed. Here, we assume the database file is at "../backend/headphone-mode.db"
-const DB_PATH = path.join(__dirname, 'headphone-mode.db');
+// Adjust the path as needed. Here, we assume the database file is at "../backend/headphoneMode.db"
+const DB_PATH = path.join(__dirname, 'headphoneMode.db');
 
 // Open a connection to the database in read-write mode.
 const db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE, (err) => {

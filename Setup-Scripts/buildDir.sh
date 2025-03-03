@@ -14,7 +14,7 @@ backend_subdirs=("pages/api" "utils")
 
 # Define files to create in each directory
 frontend_files=("index.html" "styles/styles.css" "scripts/main.js" "scripts/init.js" "scripts/api.js" "scripts/audio.js" "scripts/clientsideGPU.js")
-backend_files=("config.js" "headphone-mode.db" "pages/index.js" "pages/api/audio.js" "pages/api/openai.js" \
+backend_files=("config.js" "headphoneMode.db" "pages/index.js" "pages/api/audio.js" "pages/api/openai.js" \
                "pages/api/preferences.js" "pages/api/session.js" "utils/prompts.js" "utils/sessionHandler.js" \
                "utils/webServer.js")
 local_audio_proc_files=("keywordScan.js" "micAccess.js")

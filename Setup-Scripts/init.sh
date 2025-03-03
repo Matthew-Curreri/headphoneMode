@@ -1,6 +1,6 @@
-mkdir -p ~/Projects/headphone-mode/
+mkdir -p ~/Projects/headphoneMode/
 Setup-Scripts/buildDir.sh
-cd headphone-mode
+cd headphoneMode
 Setup-Scripts/database.sh
 Setup-Scripts/setUpDB.sh
 cd whisper

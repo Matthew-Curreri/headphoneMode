@@ -26,7 +26,7 @@ blog: www.curreri.world
 ```sh
 # Clone the repository
 git clone https://github.com/Matthew-Curreri/headphoneMode
-cd headphone-mode
+cd headphoneMode
 
 # Install dependencies
 npm install

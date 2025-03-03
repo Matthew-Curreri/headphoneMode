@@ -11,8 +11,8 @@ const path = require("path");
 const config = {
   host: "0.0.0.0",
   port: 3500,
-  frontendDir: "/home/mcurreri/Projects/headphone-mode/frontend",
-  localAudioServices: "/home/mcurreri/Projects/headphone-mode/localAudioProc",
+  frontendDir: "/home/mcurreri/Projects/headphoneMode/frontend",
+  localAudioServices: "/home/mcurreri/Projects/headphoneMode/localAudioProc",
   useHttps: false,
   httpsOptions: {
     key: null,

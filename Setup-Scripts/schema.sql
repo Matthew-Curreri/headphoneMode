@@ -5,7 +5,7 @@
 
 -- Attach to or create the main database file
 -- PRAGMA database_list;
-ATTACH DATABASE '../backend/headphone-mode.db' AS main;
+ATTACH DATABASE '../backend/headphoneMode.db' AS main;
 
 -- ============================================================================
 -- 1. Users Table

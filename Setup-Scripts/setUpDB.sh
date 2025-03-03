@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DB_PATH="../backend/headphone-mode.db"
+DB_PATH="../backend/headphoneMode.db"
 SCHEMA_FILE="../Setup-Scripts/schema.sql"
 
 # Ensure SQLite is installed
