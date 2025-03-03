@@ -11,6 +11,7 @@ blog: www.curreri.world
 - **API-Optimized Backend**: Efficient session and preference handling.
 - **Minimalist UI**: Designed for a distraction-free experience.
 - **Audio Processing (Planned)**: Voice input with OpenAI Whisper transcription.
+- **Client side LLM processing**: Off load training and generation to clientside.  **Keep up with the Jones w/o billions of dollars**
 
 ## Tech Stack
 
@@ -35,33 +36,6 @@ cp .env.example .env
 
 # Start the development server to do
 npm run dev
-```
-
-## Folder Structure
-
-```
-/headphone-mode
-├── /frontend
-│   ├── /media
-│   ├── /scripts
-│   ├── /styles
-│   ├── index.html
-│
-├── /backend
-│   ├── pages/
-│   │   ├── api/
-│   ├── utils/
-│   ├── config.js
-│
-├── /setup-scripts
-│   ├── init.sh
-│
-├── /localAudioProc (planned for local audio processing)
-├── /whisper (planned for speech-to-text integration)
-│
-├── package.json
-├── .env
-├── README.md
 ```
 
 ## Backend Overview
