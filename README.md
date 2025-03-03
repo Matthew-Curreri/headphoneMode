@@ -1,6 +1,6 @@
 # Headphone Mode
 
-Headphone Mode is an LLM-powered experience designed to enhance user interaction by providing contextual isolation, adaptive filtering, and persistent session management. The project is built with a Vanilla JavaScript frontend and a Node.js backend (using Express), utilizing the OpenAI API for processing. SQLite is planned for session persistence and user preference storage.
+Headphone Mode is an LLM-powered experience designed to enhance user interaction by providing contextual isolation, adaptive filtering, and persistent session management. The project is built with a Vanilla JavaScript frontend and a Node.js backend (using Express), utilizing the OpenAI API for processing. SQLite is planned for session persistence and user preference storage.  Now with gpu enhanced clientside generation and training with Llama.
 website: www.headphoneMode.com
 blog: www.curreri.world
 ## Features
