@@ -1,11 +1,5 @@
 const LlamaModel = require('./generation.js'); // Adjust the path if necessary
 
-describe('Experimental Generation Functionality', () => {
-    it('should return the expected output', () => {
-        expect(true).toBe(true);
-    });
-});
-
 test('generateChatCompletion should format messages and generate a response', async () => {
     const model = new LlamaModel({ model_name: 'LlamaModel' }, null); // Mock config and device
     model.generateTextCompletion = jest.fn().mockResolvedValue({
