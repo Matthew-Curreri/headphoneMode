@@ -407,7 +407,7 @@ class LlamaModel {
     // and that `this.cache` contains the accumulated keys/values for previous tokens.
     // If use_cache is false, we process the entire sequence of tokens from scratch (useful for first-time prompt).
     // Returns the logits (unnormalized probabilities) for the next token.
-    forward(tokens, use_cache=false) {
+    async forward(tokens, use_cache=false) {
         // If GPU is not used for embedding lookup or small ops, proceed with CPU for those parts.
         // 1. Get embeddings for input tokens
         const seqLength = tokens.length;
