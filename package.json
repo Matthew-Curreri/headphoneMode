@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node backend/pages/index.js",
     "dev": "nodemon backend/pages/index.js",
-    "setup": "bash Setup-Scripts/init.sh"
+    "setup": "bash Setup-Scripts/init.sh",
+    "test": "jest"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
@@ -17,6 +18,7 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.0.1"
   },
   "author": "mcurreri & ChatGPT",
