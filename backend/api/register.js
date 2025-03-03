@@ -2,10 +2,10 @@ const express = require('express');
 const db = require('../database');
 const bcrypt = require('bcrypt');
 const router = express.Router();
-
+const config = require('..config/')
 router.post('/', (req, res) => {
   const { username, password } = req.body;
-  const saltRounds = 10;
+  const saltRounds = config.saltRounds;
   const hashedPassword = bcrypt.hashSync(password, saltRounds);
   db.run(
     `INSERT INTO users (username, password) VALUES (?, ?)`,

@@ -814,7 +814,7 @@ class LlamaModel {
     async generateChatCompletion(messages, options={}) {
         // Format messages into a single prompt for the model. 
         // One simple formatting is: "System: <sys_msg>\nUser: <user_msg>\nAssistant: " and then let model generate.
-        let prompt = "";
+        let prompt = "Be as helpful and honest as is possible guide the user through the little things in their life.  Delegate tasks to the manager to preform background and scheduled tasks.  This is audio keep your answers short the less words the better if you need a moment to think feel free to use anamaonapia ";
         for (const msg of messages) {
             const role = msg.role.charAt(0).toUpperCase() + msg.role.slice(1);
             prompt += `${role}: ${msg.content}\n`;
