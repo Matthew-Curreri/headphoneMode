@@ -1,53 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>headphoneMode</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
     <!-- <div id="shader" name="shader" class="shader"></div> -->
-     <div id="main-content" name="main-content" class="main-content-container"></div> 
+    <div
+      id="main-content"
+      name="main-content"
+      class="main-content-container"
+    ></div>
     <!-- <div id="controls" name="controls" class="controls" ></div> -->
 
-    <script src="/localAudioProc/micAccess.js">
-    </script>
+    <script src="/localAudioProc/micAccess.js"></script>
     <!--<script src="/scripts/init.js"></script> -->
     <script>
       //Firing order in GUI layer 1
       //  initUI();
       //  startRecording();
-       //setTimeout(stopRecording, 200);
+      //setTimeout(stopRecording, 200);
     </script>
     <!-- Chat Interface HTML -->
-<div id="chat-container">
-  <!-- Messages will be appended here as <div class="message"> elements -->
-</div>
-<div id="input-area">
-  <input type="text" id="chat-input" placeholder="Type a message..." />
-  <button id="send-btn">Send</button>
-</div>
-<input type="file" id="train-file" accept=".json,.csv" />
-<button id="train-btn">Train Model</button>
+    <div id="chat-container">
+      <!-- Messages will be appended here as <div class="message"> elements -->
+    </div>
+    <div id="input-area">
+      <input type="text" id="chat-input" placeholder="Type a message..." />
+      <button id="send-btn">Send</button>
+    </div>
+    <input type="file" id="train-file" accept=".json,.csv" />
+    <button id="train-btn">Train Model</button>
 
-<script src="/scripts/chatApp.js"></script>
+    <script src="/scripts/chatApp.js"></script>
     <!-- <script src="/scripts/experimental/tokenizer.js"></script> -->
-    <script>document.getElementById('train-btn').onclick = async () => {
-      const fileInput = document.getElementById('train-file');
-      if (fileInput.files.length === 0) return;
-      const file = fileInput.files[0];
-      const textData = await file.text();
-      const examples = parseTrainingData(textData); // user-defined parser
-      await fineTuneModel(examples);
-      alert('Fine-tuning complete! Model updated.');
-      // Send a log to backend (optional)
-      fetch('/api/train-log', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ datasetName: file.name, examples: examples.length })
-      });
-    };
+    <script>
+      document.getElementById('train-btn').onclick = async () => {
+        const fileInput = document.getElementById('train-file')
+        if (fileInput.files.length === 0) return
+        const file = fileInput.files[0]
+        const textData = await file.text()
+        const examples = parseTrainingData(textData) // user-defined parser
+        await fineTuneModel(examples)
+        alert('Fine-tuning complete! Model updated.')
+        // Send a log to backend (optional)
+        fetch('/api/train-log', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            datasetName: file.name,
+            examples: examples.length
+          })
+        })
+      }
     </script>
   </body>
 </html>
