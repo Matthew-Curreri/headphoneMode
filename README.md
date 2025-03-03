@@ -55,7 +55,7 @@ npm run dev
 
 ## Authors
 
-- **mcurreri** (Project Lead)
+- **Matthew James Curreri** (Project Lead)
 - **ChatGPT** (Co-Author)
 
 ## License
