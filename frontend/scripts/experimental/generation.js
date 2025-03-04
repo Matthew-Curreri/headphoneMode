@@ -203,6 +203,20 @@ class LlamaModel {
         return model;
     }
 
+    // Update loadFromBinary to accept binary data directly
+    static async loadFromBinary(configUrl, binaryData) {
+        const configData = await fetch(configUrl).then(res => res.json());
+        const adapter = await navigator.gpu.requestAdapter();
+        if (!adapter) throw new Error("WebGPU not supported or available.");
+        const device = await adapter.requestDevice();
+        const model = new LlamaModel(configData, device);
+        if (!configData.weight_map) {
+            throw new Error("Config missing weight_map for binary weights.");
+        }
+        model._loadWeightsFromBinary(configData.weight_map, binaryData);
+        return model;
+    }
+
     // Internal helper: load weights from a JSON structure (object of name: values).
     _loadWeightsFromJSON(weightsObj) {
         for (const [name, value] of Object.entries(weightsObj)) {
@@ -812,17 +826,13 @@ class LlamaModel {
     // Accepts an array of message objects (with roles like 'system', 'user', 'assistant') and generates the assistant's reply.
     // Returns a structured response similar to OpenAI's chat completion API.
     async generateChatCompletion(messages, options={}) {
-        // Format messages into a single prompt for the model. 
-        // One simple formatting is: "System: <sys_msg>\nUser: <user_msg>\nAssistant: " and then let model generate.
         let prompt = "Be as helpful and honest as is possible guide the user through the little things in their life.  Delegate tasks to the manager to preform background and scheduled tasks.  This is audio keep your answers short the less words the better if you need a moment to think feel free to use anamaonapia ";
         for (const msg of messages) {
             const role = msg.role.charAt(0).toUpperCase() + msg.role.slice(1);
             prompt += `${role}: ${msg.content}\n`;
         }
         prompt += "Assistant: ";
-        // Now use text completion on the formatted prompt
         const completion = await this.generateTextCompletion(prompt, options);
-        // Modify the output format for chat
         const generatedText = completion.choices[0].text;
         return {
             id: "chatcmpl-" + Math.random().toString(36).substring(2),
@@ -838,4 +848,21 @@ class LlamaModel {
             ]
         };
     }
+}
+
+module.exports = LlamaModel;
+
+// Define the generateReply function
+async function generateReply(messages) {
+    const model = new LlamaModel({ model_name: 'LlamaModel' }, window.device); // Use the globally accessible device
+    const response = await model.generateChatCompletion(messages);
+    return response.choices[0].message.content;
+}
+
+// Export both LlamaModel and generateReply
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { 
+        LlamaModel, 
+        generateReply 
+    };
 }

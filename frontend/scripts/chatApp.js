@@ -40,3 +40,34 @@ sendBtn.addEventListener('click', async () => {
     body: JSON.stringify({ text: reply, role: 'assistant' })
   })
 })
+
+document.getElementById('sendButton').addEventListener('click', async () => {
+    const messages = [
+        { role: 'system', content: 'You are a helpful assistant.' },
+        { role: 'user', content: 'What is the weather today?' }
+    ];
+    const reply = await generateReply(messages);
+    console.log(reply);
+});
+
+document.getElementById('loadModelButton').addEventListener('click', async () => {
+  const fileInput = document.getElementById('binaryUpload');
+  if (fileInput.files.length === 0) {
+    alert('Please upload a binary file.');
+    return;
+  }
+  const binaryFile = fileInput.files[0];
+  const binaryData = await binaryFile.arrayBuffer();
+  const model = await LlamaModel.loadFromBinary('/path/to/config.json', binaryData);
+  window.model = model; // Make the model globally accessible
+  alert('Model loaded successfully.');
+});
+
+// Modify the generateReply function to use the loaded model
+async function generateReply(messages) {
+  if (!window.model) {
+    throw new Error('Model not loaded. Please upload a binary file and load the model.');
+  }
+  const response = await window.model.generateChatCompletion(messages);
+  return response.choices[0].message.content;
+}
