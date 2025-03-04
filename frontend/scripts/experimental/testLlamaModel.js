@@ -1,13 +1,15 @@
 import { LlamaModel } from './generation.js';
 
 document.getElementById('runTestButton').addEventListener('click', async () => {
-  const mockConfig = { model_name: 'LlamaModel' };
-  const device = window.device;
-
-  if (!device) {
-    console.error("WebGPU device not initialized.");
+  // Request the GPU adapter and device
+  const adapter = await navigator.gpu.requestAdapter();
+  if (!adapter) {
+    console.error("WebGPU not supported or available in this environment.");
     return;
   }
+  const device = await adapter.requestDevice();
+
+  const mockConfig = { model_name: 'LlamaModel' };
 
   const model = new LlamaModel(mockConfig, device);
   model.generateTextCompletion = async (messages) => {

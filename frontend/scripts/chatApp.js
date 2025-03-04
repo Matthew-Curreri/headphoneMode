@@ -1,6 +1,6 @@
-const chatContainer = document.getElementById('chat-container')
-const input = document.getElementById('chat-input')
-const sendBtn = document.getElementById('send-btn')
+const chatContainer = document.getElementById('chatContainer')
+const input = document.getElementById('chatInput')
+const sendBtn = document.getElementById('sendButton')
 
 let chatHistory = [] // to hold the conversation turns for context
 

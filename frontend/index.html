@@ -5,23 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Headphone Mode</title>
     <script src="scripts/experimental/generation.js"></script>
-    <script src="scripts/chatApp.js"></script>
+    
+    <script src="scripts/testLlamaModel.js"></script>
+
+    <!-- Include the new script -->
   </head>
   <body>
     <button id="sendButton">Send</button>
     <input type="file" id="binaryUpload" />
     <button id="loadModelButton">Load Model</button>
+    <button id="runTestButton">Run Test</button>
+    <!-- Button to run the test -->
+    <div id="testResult"></div>
+    <!-- Container to display the test result -->
     <script>
       // Ensure the scripts are loaded and the device is requested
       window.addEventListener('load', async () => {
-        const adapter = await navigator.gpu.requestAdapter();
+        const adapter = await navigator.gpu.requestAdapter()
         if (!adapter) {
-          console.error("WebGPU not supported or available in this environment.");
-          return;
+          function promptEnableWebGPU() {
+            const message = `
+        <h2>Enable WebGPU</h2>
+        <h3>In Chrome:</h3>
+        <ol>
+            <li>Open Chrome and navigate to <a href="chrome://flags" target="_blank">chrome://flags</a>.</li>
+            <li>Search for "WebGPU" in the search bar.</li>
+            <li>Enable the "Unsafe WebGPU" flag.</li>
+            <li>Restart Chrome to apply the changes.</li>
+        </ol>
+        <h3>In Firefox:</h3>
+        <ol>
+            <li>Open Firefox and navigate to <a href="about:config" target="_blank">about:config</a>.</li>
+            <li>Search for "dom.webgpu.enabled".</li>
+            <li>Set the value to <code>true</code>.</li>
+            <li>Restart Firefox to apply the changes.</li>
+        </ol>
+    `
+
+            const container = document.createElement('div')
+            container.innerHTML = message
+            container.style.position = 'fixed'
+            container.style.top = '10%'
+            container.style.left = '50%'
+            container.style.transform = 'translateX(-50%)'
+            container.style.backgroundColor = 'white'
+            container.style.padding = '20px'
+            container.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'
+            container.style.zIndex = '1000'
+
+            const closeButton = document.createElement('button')
+            closeButton.textContent = 'Close'
+            closeButton.style.marginTop = '10px'
+            closeButton.onclick = () => document.body.removeChild(container)
+
+            container.appendChild(closeButton)
+            document.body.appendChild(container)
+          }
+
+          // Call the function to prompt the user
+          promptEnableWebGPU()
+          return
         }
-        const device = await adapter.requestDevice();
-        window.device = device; // Make the device globally accessible
-      });
+        const device = await adapter.requestDevice()
+        window.device = device // Make the device globally accessible
+      })
     </script>
+    <script src="scripts/chatApp.js"></script>
   </body>
 </html>
