@@ -11,12 +11,12 @@ function initUI () {
   const br = document.createElement('br')
   const recordingIndicator = document.createElement('div')
   const controlsElm = document.getElementById('controls')
-  startBtn.classList.add('button', 'start-btn')
-  stopBtn.classList.add('button', 'stop-btn')
+  startBtn.classList.add('button', 'startBtn')
+  stopBtn.classList.add('button', 'stopBtn')
   br.classList.add('break')
   recordingIndicator.classList.add('recordingIndicator')
   recordingIndicator.classList.add('recordingIndicator')
-  //recordingIndicator.classList.add('breathing-fast');
+  //recordingIndicator.classList.add('breathingFast');
   recordingIndicator.classList.add('spinning')
   //recordingIndicator.classList.add('cloud');
 
