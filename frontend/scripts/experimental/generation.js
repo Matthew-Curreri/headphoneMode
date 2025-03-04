@@ -850,7 +850,7 @@ class LlamaModel {
     }
 }
 
-module.exports = LlamaModel;
+// module.exports = LlamaModel;
 
 // Define the generateReply function
 async function generateReply(messages) {
