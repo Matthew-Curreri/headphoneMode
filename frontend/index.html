@@ -6,7 +6,6 @@
     <title>Headphone Mode</title>
     <script src="scripts/experimental/generation.js"></script>
     
-    <script src="scripts/testLlamaModel.js"></script>
 
     <!-- Include the new script -->
   </head>
@@ -18,11 +17,12 @@
     <!-- Button to run the test -->
     <div id="testResult"></div>
     <!-- Container to display the test result -->
+
+    <script src="scripts/chatApp.js"></script>
     <script>
       // Ensure the scripts are loaded and the device is requested
       window.addEventListener('load', async () => {
-        const adapter = await navigator.gpu.requestAdapter()
-        if (!adapter) {
+        try{ adapter =  navigator.gpu.requestAdapter()}catch(e){
           function promptEnableWebGPU() {
             const message = `
         <h2>Enable WebGPU</h2>
@@ -70,6 +70,5 @@
         window.device = device // Make the device globally accessible
       })
     </script>
-    <script src="scripts/chatApp.js"></script>
   </body>
 </html>
